@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-3" *ngFor="let property of filteredProperties">
+    <div class="card text-dark" style="width: 18rem;">
+      <div class="card-body">
+        <img class="card-img-top" src="https://media.istockphoto.com/id/908334194/photo/house-key-on-a-house-shaped-silver-keyring-in-the-lock-of-a-entrance-brown-door.webp?b=1&s=612x612&w=0&k=20&c=9EjNaBIQm8wuU4FXLVy94edFsXeJRMPOJdfOLvGjLPg=" alt="Card image cap">
+        <hr>
+         <p>Owner: {{ property.owner }}</p> 
+        <p>Rent: {{ property.rent }}</p>
+        <p>Area: {{ property.area }}</p>
+        <p>Place: {{ property.place }}</p>
+        <p>Amenities: {{ property.amenities }}</p>
+        <p>Status: {{ property.status }}</p>
+        <hr>
+        <p>Contact: {{ property.contact }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <ul class="card text-dark">
+ <!-- <background-imgage src="https://img.freepik.com/free-photo/hand-presenting-model-house-home-loan-campaign_53876-104970.jpg?w=996&t=st=1691252203~exp=1691252803~hmac=a69b29f60b4346f770ea43cfbeeec3835c914c9aa34f50dde76cff2540187b82" alt="">-->
+  <li *ngFor="let property of filteredProperties">
+    <p>Owner: {{ property.owner }}</p>
+    <p>Rent: {{ property.rent }}</p>
+    <p>Contact: {{ property.contact }}</p>
+    <p>Area: {{ property.area }}</p>
+    <p>Place: {{ property.place }}</p>
+    <p>Amenities: {{ property.amenities }}</p>
+    <p>Status: {{ property.status }}</p>
+    
+    <p>Owner Contact: {{ property.contact }}</p>
+    <button *ngIf="isLoggedIn && usertype === 'tenant'" [disabled]="property.contactRequestApproved" (click)="requestContactDetails(property)">Request Contact Details</button>
+    <button *ngIf="isLoggedIn && usertype === 'owner'" (click)="approveContactRequest(property)">Approve Contact Request</button>
+    <p *ngIf="property.showContactEmail && property.contactEmail">Contact Email: {{ property.contactEmail }}</p>
+  
+  </li>
+</ul> 
